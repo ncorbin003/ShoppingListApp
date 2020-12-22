@@ -68,6 +68,17 @@ public class ListAdapter extends BaseAdapter {
                     searchArrayList.add(savedItem);
 
                 }
+                else {
+                    int lastUnchecked = 0;
+                    searchArrayList.remove(index);
+                    for (int i =0; i < searchArrayList.size(); i++) {
+                        if (!searchArrayList.get(i).isChecked) {
+                            lastUnchecked = i;
+                        }
+                    }
+                    searchArrayList.add(lastUnchecked, savedItem);
+
+                }
                 notifyDataSetChanged();
 
             }
