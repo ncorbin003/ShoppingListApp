@@ -13,9 +13,10 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:layout_marginBottom="675dp"
+        app:backgroundTint="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <Button
         android:id="@+id/button_first"
@@ -31,6 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="82dp" />
+        tools:layout_editor_absoluteY="82dp" >
+
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

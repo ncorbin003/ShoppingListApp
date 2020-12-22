@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class FirstFragment extends Fragment {
 
-    ArrayList trackedList = new ArrayList<String>();
+    ArrayList trackedList = new ArrayList<ListItem>();
 
 
 
@@ -28,7 +28,7 @@ public class FirstFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
-        trackedList.add("");
+        trackedList.add(new ListItem("", false));
 
 
 
@@ -41,7 +41,7 @@ public class FirstFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trackedList.add("");
+                trackedList.add(new ListItem("", false));
                 listAdapter.updateList(trackedList);
                 System.out.println("text");
             }

@@ -9,20 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import java.util.ArrayList;
 
 public class ListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
-    private ArrayList<String> searchArrayList;
+    private ArrayList<ListItem> searchArrayList;
 
-    public ListAdapter(Context context, ArrayList<String> initalList) {
+
+    public ListAdapter(Context context, ArrayList<ListItem> initalList) {
         searchArrayList = initalList;
         mInflater = LayoutInflater.from(context);
     }
 
-    public void updateList(ArrayList<String> updatedList){
+    public void updateList(ArrayList<ListItem> updatedList){
         searchArrayList = updatedList;
         //Triggers the list update
         notifyDataSetChanged();
@@ -53,11 +55,29 @@ public class ListAdapter extends BaseAdapter {
 
         //Find the Text view layout. Then set the text, color, and size.
         CheckBox checkBox = convertView.findViewById(R.id.checkBox1);
+        checkBox.setChecked(searchArrayList.get(index).isChecked);
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                ListItem savedItem = searchArrayList.get(index);
+                savedItem.isChecked = isChecked;
+
+                if (isChecked) {
+                    searchArrayList.remove(index);
+                    searchArrayList.add(savedItem);
+                    notifyDataSetChanged();
+                }
+            }
+        });
+
         EditText editText = convertView.findViewById(R.id.editItemText);
 
-        editText.setText(searchArrayList.get(position));
+        editText.setText(searchArrayList.get(position).checkString);
         editText.setTextColor(Color.BLACK);
         editText.setTextSize(20);
+        editText.requestFocus();
+        editText.setSelection(editText.length());
 
         editText.addTextChangedListener(new TextWatcher() {
 
@@ -67,7 +87,9 @@ public class ListAdapter extends BaseAdapter {
 
                 // yourEditText...
                 //updated item
-                searchArrayList.set(index, s.toString());
+                ListItem localListItem = searchArrayList.get(index);
+                localListItem.checkString = s.toString();
+                searchArrayList.set(index, localListItem);
                 //notifyDataSetChanged();
             }
 
