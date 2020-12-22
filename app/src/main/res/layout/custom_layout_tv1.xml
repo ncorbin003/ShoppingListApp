@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -14,10 +15,12 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="228dp"
         android:layout_marginRight="228dp"
+        android:textColorLink="#8E8888"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:buttonTint="#757575"/>
 
     <EditText
         android:id="@+id/editItemText"
@@ -31,6 +34,7 @@
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/checkBox1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="#00FFFFFF"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

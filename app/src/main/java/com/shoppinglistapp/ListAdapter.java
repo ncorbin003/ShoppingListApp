@@ -66,15 +66,22 @@ public class ListAdapter extends BaseAdapter {
                 if (isChecked) {
                     searchArrayList.remove(index);
                     searchArrayList.add(savedItem);
-                    notifyDataSetChanged();
+
                 }
+                notifyDataSetChanged();
+
             }
         });
 
         EditText editText = convertView.findViewById(R.id.editItemText);
 
         editText.setText(searchArrayList.get(position).checkString);
-        editText.setTextColor(Color.BLACK);
+        if (searchArrayList.get(index).isChecked) {
+            editText.setTextColor(Color.GRAY);
+        } else {
+            editText.setTextColor(Color.BLACK);
+        }
+
         editText.setTextSize(20);
         editText.requestFocus();
         editText.setSelection(editText.length());
