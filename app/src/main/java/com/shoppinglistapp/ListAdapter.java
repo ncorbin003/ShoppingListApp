@@ -2,6 +2,8 @@ package com.shoppinglistapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,7 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        final int index = position;
         //Init a new view that hasn't existed before
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.custom_layout_tv1, parent, false);
@@ -55,6 +58,24 @@ public class ListAdapter extends BaseAdapter {
         editText.setText(searchArrayList.get(position));
         editText.setTextColor(Color.BLACK);
         editText.setTextSize(20);
+
+        editText.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+
+                // you can call or do what you want with your EditText here
+
+                // yourEditText...
+                //updated item
+                searchArrayList.set(index, s.toString());
+                //notifyDataSetChanged();
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        });
+
         return convertView;
     }
 }
