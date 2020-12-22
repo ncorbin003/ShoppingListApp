@@ -28,10 +28,8 @@ public class FirstFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
-        trackedList.add("First item");
-        trackedList.add("Second item");
-        trackedList.add("Third item");
-        trackedList.add("Fourth item");
+        trackedList.add("");
+
 
 
         //Inflate the ListView
@@ -43,7 +41,7 @@ public class FirstFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trackedList.add("Adding item to list");
+                trackedList.add("");
                 listAdapter.updateList(trackedList);
                 System.out.println("text");
             }

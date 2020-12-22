@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -49,10 +50,11 @@ public class ListAdapter extends BaseAdapter {
 
         //Find the Text view layout. Then set the text, color, and size.
         CheckBox checkBox = convertView.findViewById(R.id.checkBox1);
+        EditText editText = convertView.findViewById(R.id.editItemText);
 
-        checkBox.setText(searchArrayList.get(position));
-        checkBox.setTextColor(Color.BLACK);
-        checkBox.setTextSize(20);
+        editText.setText(searchArrayList.get(position));
+        editText.setTextColor(Color.BLACK);
+        editText.setTextSize(20);
         return convertView;
     }
 }
