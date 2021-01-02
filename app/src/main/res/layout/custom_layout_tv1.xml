@@ -2,9 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -15,12 +14,12 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="228dp"
         android:layout_marginRight="228dp"
+        android:buttonTint="#757575"
         android:textColorLink="#8E8888"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:buttonTint="#757575"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editItemText"
@@ -29,12 +28,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="13dp"
+        android:backgroundTint="#00FFFFFF"
         android:editable="true"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/checkBox1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="#00FFFFFF"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
