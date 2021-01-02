@@ -39,8 +39,9 @@ public class FirstFragment extends Fragment {
         //Inflate the Recycler view - create the list
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
+
         //creating the custom adapter with the one item
-        final CustomAdapter customAdapter = new CustomAdapter(trackedList);
+        final CustomAdapter customAdapter = new CustomAdapter(trackedList, getActivity());
 
         //set this adapter to the recycler view
         recyclerView.setAdapter(customAdapter);
