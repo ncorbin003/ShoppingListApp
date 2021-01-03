@@ -57,6 +57,7 @@ public class FirstFragment extends Fragment {
 
         //The plus button, searching for it and adding the click listener
         FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setFocusable(false);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

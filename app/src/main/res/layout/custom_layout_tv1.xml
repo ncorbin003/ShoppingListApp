@@ -34,6 +34,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/checkBox1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
