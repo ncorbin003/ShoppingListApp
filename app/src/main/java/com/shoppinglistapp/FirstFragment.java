@@ -1,5 +1,6 @@
 package com.shoppinglistapp;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +9,12 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.lifecycle.Observer;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 public class FirstFragment extends Fragment {
     //holds all list items
     ArrayList trackedList = new ArrayList<ListItem>();
+    ItemViewModel mItemViewModel;
 
 
     //creates and returns the view hierarchy associated with the fragment.
@@ -28,20 +32,34 @@ public class FirstFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+
         // Inflate the layout for this fragment - ?create on the phone?
         View view = inflater.inflate(R.layout.fragment_first, container, false);
-
-        //initial data added
-        trackedList.add(new ListItem("", false));
-
 
 
         //Inflate the Recycler view - create the list
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
+        mItemViewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+
+        //get items from database and if there are no item then add an empty one
+        //trackedList = new ArrayList(mItemViewModel.getList());
+        //initial data added
+        if (trackedList.size() == 0) {
+            trackedList.add(new ListItem("", false));
+        }
 
         //creating the custom adapter with the one item
-        final CustomAdapter customAdapter = new CustomAdapter(trackedList, getActivity());
+        final CustomAdapter customAdapter = new CustomAdapter(trackedList, getActivity(),
+                mItemViewModel);
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                customAdapter.updateList(new ArrayList(mItemViewModel.getList()));
+            }
+        });
+
 
         //set this adapter to the recycler view
         recyclerView.setAdapter(customAdapter);
